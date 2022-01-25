@@ -11,7 +11,7 @@ import CartPage from './pages/cart';
 import HistoryPage from './pages/history';
 import HistoryAdmin from './pages/historyAdmin';
 import NotFound from './pages/notFound';
-import ContactPage from './pages/contact';
+import ProfilePage from './pages/profile';
 
 
 //import actions
@@ -49,7 +49,7 @@ class App extends React.Component {
             <Route path="/cart" component={CartPage} />
             <Route path="/history" component={HistoryPage} />
             <Route path="/historyadmin" component={HistoryAdmin} />
-            <Route path="/contact" component={ContactPage} />
+            <Route path="/profile" component={ProfilePage} />
             <Route path="*" component={NotFound} />
           </Switch>
       </div>

@@ -24,8 +24,8 @@ class NavigationBar extends React.Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/" style={styles.navLink}>Home</Nav.Link>
-                        <Nav.Link href="home" style={styles.navLink}>Product</Nav.Link>
-                        <Nav.Link href="contact" style={styles.navLink}>Contact Us</Nav.Link>
+                        <Nav.Link as={Link} to="/" style={styles.navLink}>Product</Nav.Link>
+                        <Nav.Link as={Link} to="/" style={styles.navLink}>Contact Us</Nav.Link>
                     </Nav>
                     {this.props.role === 'user'
                     ?
@@ -44,7 +44,7 @@ class NavigationBar extends React.Component {
                             {this.props.username
                                 ?
                                 <>
-                                    <Dropdown.Item >Profile</Dropdown.Item>
+                                    <Dropdown.Item as={Link} to="/profile">Profile</Dropdown.Item>
                                     <Dropdown.Item as={Link} to={this.props.role === 'admin' ? "/historyAdmin" : "/history" } >
                                         {this.props.role === "admin" ? "History Admin" : "History"}
                                     </Dropdown.Item>
