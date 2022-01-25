@@ -53,7 +53,7 @@ class HomePage extends React.Component {
                         })}
                     </Carousel>
                     <div style={styles.sectProducts}>
-                        <h1>Our Bags</h1>
+                        <h1 className='product' >Our Bags</h1>
                         <div style={styles.contProducts}>
                             {this.state.products.map((item, index) => {
                                 return (
@@ -79,6 +79,18 @@ class HomePage extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div style={styles.sectContact}>
+                    <h1>Contact Us</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos inventore, fugit magni non molestiae ea id earum veritatis iusto magnam expedita enim consequuntur voluptates ratione et explicabo? Vel, nulla consectetur?</p>
+                    <div style={styles.contItem}>
+                        <a style={{padding: '10px'}} href="http://wa.me/6285731040552"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a style={{padding: '10px'}} href="https://www.linkedin.com/in/nurul-hidayati-khusnia-fatatik-212646190/" ><i class="fab fa-linkedin"></i> Linkedin</a>
+                        <a style={{padding: '10px'}} href="http://instagram.com/conannia17?utm_source=qr"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a style={{padding: '10px'}} href="https://twitter.com/khusniafh"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a style={{padding: '10px'}} href="mailto:conannia17@gmail.com"><i class="fas fa-envelope-open-text"></i>  conannia17@gmail.com</a>
+
+                    </div>
+                </div>
                 <footer style={styles.footer}>
                     <div style={styles.footerList}>
                         <div style={styles.footerItem}>
@@ -96,6 +108,7 @@ class HomePage extends React.Component {
                         <div style={styles.footerItem}>
                             <h6 style={styles.footerItemh6}>Earn Money</h6>
                             <a href="">Become Partners</a>
+
                         </div>
                     </div>
                     <div>
@@ -129,6 +142,19 @@ const styles = {
         marginRight: '5vw',
         borderTop: '1px solid black',
         paddingTop: '20px',
+    },
+    sectContact: {
+        marginTop: '30px',
+        marginLeft: '5vw',
+        marginRight: '5vw',
+        borderTop: '1px solid black',
+        paddingTop: '20px',
+        textAlign: 'center',
+    },
+    contItem: {
+        margin: '15px 20px',
+        padding: '20px',
+        justifyContent: 'space-evenly',
     },
     contProducts: {
         display: 'flex',
