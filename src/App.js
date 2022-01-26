@@ -34,7 +34,7 @@ class App extends React.Component {
             <Route path="/register" component={RegisPage} />
             <Route path="/detail" component={DetailPage} />
             <Route path="/historyadmin" component={HistoryAdmin} />
-            <Route path="*" component={NotFound} />
+            {/* <Route path="*" component={NotFound} /> */}
           </Switch>
         </div>
       )
@@ -50,7 +50,7 @@ class App extends React.Component {
             <Route path="/history" component={HistoryPage} />
             <Route path="/historyadmin" component={HistoryAdmin} />
             <Route path="/profile" component={ProfilePage} />
-            <Route path="*" component={NotFound} />
+            {/* <Route path="*" component={NotFound} /> */}
           </Switch>
       </div>
     ) 
