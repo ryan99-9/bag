@@ -13,7 +13,10 @@ class HomePage extends React.Component {
         super(props)
         this.state = {
             carousels: [],
-            products: []
+            products: [],
+            page: 1,
+            prodPerPage: 4,
+            max: 0
         }
     }
 
@@ -25,14 +28,56 @@ class HomePage extends React.Component {
                     .then(res => {
                         this.setState({ products: res.data })
                     })
+                Axios.get('http://localhost:2000/products')
+                    .then(res => {
+                        this.setState({ products: res.data, max: Math.ceil(res.data.length / this.state.prodPerPage) })
+                    })
             })
+    }
+
+    onNextPage = () => {
+        this.setState({ page: this.state.page + 1 })
+
+    }
+    onPrevPage = () => {
+        this.setState({ page: this.state.page - 1 })
+    }
+
+    showProduct = () => {
+        let beginningIndex = (this.state.page - 1) * this.state.prodPerPage
+        let currentProd = this.state.products.slice(beginningIndex, beginningIndex + this.state.prodPerPage)
+        console.log(currentProd)
+        return (
+            currentProd.map((item, index) => {
+                return (
+                    <Card style={{ width: '18rem', marginBottom: '15px', marginTop: '15px' }} key={index}>
+                        <div style={styles.cardImg}>
+                            <Card.Img variant="top" src={item.images[0]} />
+                        </div>
+                        <Card.Body style={styles.cardBody}>
+                            <Card.Title style={styles.cardTitle}>{item.name}</Card.Title>
+                            <Card.Text><strong>IDR {item.price.toLocaleString()},00</strong></Card.Text>
+                            <div style={styles.contButton}>
+                                <Button variant="outline-light">
+                                    <i className="far fa-bookmark"></i>
+                                </Button>
+                                <Button variant="outline-light" as={Link} to={`/detail?${item.id}`}>
+                                    <i className="fas fa-cart-plus"></i> Buy Now
+                                </Button>
+                            </div>
+                        </Card.Body>
+                    </Card>
+                )
+            })
+        )
+
     }
 
     render() {
         // console.log(this.state.carousels)
         // console.log(this.state.products)
         return (
-            <div style={{ backgroundColor: '#FFCDDD', paddingTop: '10vh'}}>
+            <div style={{ backgroundColor: '#FFCDDD', paddingTop: '10vh' }}>
                 <NavigationBar />
                 <div>
                     <Carousel style={styles.carousel}>
@@ -54,28 +99,23 @@ class HomePage extends React.Component {
                     </Carousel>
                     <div style={styles.sectProducts}>
                         <h1 id="ourproduct" className='product' >Our Bags</h1>
+                        <div className="d-flex">
+                            <Button
+                                disabled={this.state.page <= 1 ? true : false}
+                                onClick={this.onPrevPage}
+                                style={{ backgroundColor: '#B762C1', border: 'none' }}>
+                                <i className='far fa-chevron-left'></i>
+                            </Button>
+                            <p style={{ marginBottom: '0' }} className="mx-3" >Page {this.state.page} of {this.state.max}</p>
+                            <Button
+                                disabled={this.state.page >= this.state.max ? true : false}
+                                onClick={this.onNextPage}
+                                style={{ backgroundColor: '#B762C1', border: 'none' }}>
+                                <i className='far fa-chevron-right'></i>
+                            </Button>
+                        </div>
                         <div style={styles.contProducts}>
-                            {this.state.products.map((item, index) => {
-                                return (
-                                    <Card style={{ width: '18rem', marginBottom: '15px', marginTop: '15px' }} key={index}>
-                                        <div style={styles.cardImg}>
-                                            <Card.Img variant="top" src={item.images[0]} />
-                                        </div>
-                                        <Card.Body style={styles.cardBody}>
-                                            <Card.Title style={styles.cardTitle}>{item.name}</Card.Title>
-                                            <Card.Text><strong>IDR {item.price.toLocaleString()},00</strong></Card.Text>
-                                            <div style={styles.contButton}>
-                                                <Button variant="outline-light">
-                                                    <i className="far fa-bookmark"></i>
-                                                </Button>
-                                                <Button variant="outline-light" as={Link} to={`/detail?${item.id}`}>
-                                                    <i className="fas fa-cart-plus"></i> Buy Now
-                                                </Button>
-                                            </div>
-                                        </Card.Body>
-                                    </Card>
-                                )
-                            })}
+                            {this.showProduct()}
                         </div>
                     </div>
                 </div>
@@ -83,11 +123,11 @@ class HomePage extends React.Component {
                     <h1 id='contactus'>Contact Us</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos inventore, fugit magni non molestiae ea id earum veritatis iusto magnam expedita enim consequuntur voluptates ratione et explicabo? Vel, nulla consectetur?</p>
                     <div style={styles.contItem}>
-                        <a style={{padding: '10px'}} href="http://wa.me/6285731040552"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a style={{padding: '10px'}} href="https://www.linkedin.com/in/nurul-hidayati-khusnia-fatatik-212646190/" ><i class="fab fa-linkedin"></i> Linkedin</a>
-                        <a style={{padding: '10px'}} href="http://instagram.com/conannia17?utm_source=qr"><i class="fab fa-instagram"></i> Instagram</a>
-                        <a style={{padding: '10px'}} href="https://twitter.com/khusniafh"><i class="fab fa-twitter"></i> Twitter</a>
-                        <a style={{padding: '10px'}} href="mailto:conannia17@gmail.com"><i class="fas fa-envelope-open-text"></i>  conannia17@gmail.com</a>
+                        <a style={{ padding: '10px' }} href="http://wa.me/6285731040552"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a style={{ padding: '10px' }} href="https://www.linkedin.com/in/nurul-hidayati-khusnia-fatatik-212646190/" ><i class="fab fa-linkedin"></i> Linkedin</a>
+                        <a style={{ padding: '10px' }} href="http://instagram.com/conannia17?utm_source=qr"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a style={{ padding: '10px' }} href="https://twitter.com/khusniafh"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a style={{ padding: '10px' }} href="mailto:conannia17@gmail.com"><i class="fas fa-envelope-open-text"></i>  conannia17@gmail.com</a>
 
                     </div>
                 </div>
@@ -170,7 +210,7 @@ const styles = {
         backgroundColor: '#B762C1',
         borderRadius: '15px 15px 3px 3px',
         color: '#f8f9fa',
-    
+
     },
     cardTitle: {
         overflow: 'hidden',
