@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/static/js/main.addf25ab.chunk.js",
+    "main.js.map": "/static/js/main.addf25ab.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b2124ad8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b2124ad8.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.65c874c6.chunk.js": "/static/js/2.65c874c6.chunk.js",
+    "static/js/2.65c874c6.chunk.js.map": "/static/js/2.65c874c6.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/static/css/2.4c97ca4f.chunk.css.map",
+    "static/js/2.65c874c6.chunk.js.LICENSE.txt": "/static/js/2.65c874c6.chunk.js.LICENSE.txt",
+    "static/media/baglogo.png": "/static/media/baglogo.318bdd1c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b2124ad8.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.65c874c6.chunk.js",
+    "static/js/main.addf25ab.chunk.js"
+  ]
+}
